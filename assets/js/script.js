@@ -19,14 +19,20 @@
 var generateQuiz = document.querySelector("#start-quiz");
 var timerStart = document.querySelector("#timer");
 
-timerStart = setInterval(60000);
-
 // now once button is cicked, you must run a function to create the html
+var sec = 15;
+var time = setInterval(myTimer, 1000);
 
-var generateQuestion = function() {
-
+function myTimer() {
+    // why does below work as getElement by id but not as query selector
+    timerStart.innerHTML = sec + " sec left";
+    sec--;
+    if (sec == -1) {
+        clearInterval(time);
+        alert("Time out!");
+    }
 }
 
 // we also need to make timer start counting when button is clicked. link both?
 
-generateQuiz.addEventListener("submit", generateQuestion);
+generateQuiz.addEventListener("click", time);

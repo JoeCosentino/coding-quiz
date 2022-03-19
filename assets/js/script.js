@@ -35,4 +35,4 @@ function myTimer() {
 
 // we also need to make timer start counting when button is clicked. link both?
 
-generateQuiz.addEventListener("click", time);
+generateQuiz.addEventListener("click", myTimer);

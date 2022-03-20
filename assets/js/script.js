@@ -62,12 +62,23 @@ var getQuestion = function(questionIndex) {
 // create a function to show the choices
 var getChoices = function(questionIndex) {
     if (secondsLeft > 0) {
-        var quizChoices = document.createElement("button");
-        quizChoices.textContent = questions[questionIndex].choices;
-        quizChoicesEl.appendChild(quizChoices);
+        for(var i = 0; i < questions[questionIndex].choices.length; i++) {
+            var quizChoices = document.createElement("button");
+            quizChoices.textContent = questions[questionIndex].choices[i];
+            quizChoicesEl.appendChild(quizChoices);
+        }
+    }
 
+    checkAnswer();
+    // now program has to check the answer and move onto the next one
+};
+
+var checkAnswer = function() {
+    if(event.target.value != questions[questionIndex].correctChoice) {
+        secondsLeft = secondsLeft;
     }
 };
+
 
 function start(){
     myTimer();

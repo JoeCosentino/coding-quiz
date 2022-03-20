@@ -20,7 +20,7 @@ var buttonEl = document.querySelector("#start-quiz");
 var timerStart = document.querySelector("#timer");
 var quizQuestionEl = document.querySelector("#quiz-questions");
 var quizChoicesEl = document.querySelector("#quiz-choices");
-var secondsLeft = 15;
+var secondsLeft = 75;
 
 var questions = [
 {
@@ -66,16 +66,27 @@ var getChoices = function(questionIndex) {
             var quizChoices = document.createElement("button");
             quizChoices.textContent = questions[questionIndex].choices[i];
             quizChoices.setAttribute("id", "choice-button");
+            quizChoices.setAttribute("value", questions[questionIndex].choices[i]);
             quizChoicesEl.appendChild(quizChoices);
-            quizChoices.onclick(checkAnswer);
+            quizChoices.onclick = checkAnswer;
         }
     }
 };
 
 var checkAnswer = function() {
     if(event.target.value != questions[questionIndex].correctChoice) {
-        secondsLeft = secondsLeft;
+        alert("Incorrect! Try Again");
+        secondsLeft = secondsLeft - 5;
     }
+    else if (event.target.value = questions[questionIndex].correctChoice) {
+        alert("Correct!");
+        secondsLeft = secondsLeft + 7;
+        questionIndex++;
+        quizChoicesEl.innerHTML="";
+        getQuestion(questionIndex);
+        getChoices(questionIndex);
+    }
+    console.log(checkAnswer);
 };
 
 

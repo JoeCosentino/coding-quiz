@@ -87,18 +87,10 @@ var checkAnswer = function() {
         getQuestion(questionIndex);
         getChoices(questionIndex);
     }
-    else if (secondsLeft === 0 || questionIndex === 5) {
-        // timer stop
-        var finalScore = secondsLeft;
-        // display score and give user chance to submit initials to highschore
-        // take quiz off of page
-        setHighScore(finalScore);
+    // else if (secondsLeft === 0 || questionIndex === 5) {
+    //     // timer stop
          
-    }
-};
-
-var setHighScore = function() {
-    localStorage.setItem("finalScore", JSON.stringify(finalScore));
+    // }
 };
 
 function start(){
@@ -117,10 +109,18 @@ function myTimer() {
     if (secondsLeft == -1 || questionIndex == 5) {
         clearInterval(time);
         alert("Time out!");
+        var finalScore = this.secondsLeft;
+        // display score and give user chance to submit initials to highschore
+        // take quiz off of page
+        setHighScore(finalScore);
     }
 
     }, 1000);
 }
+
+var setHighScore = function() {
+    localStorage.setItem("finalScore", JSON.stringify(finalScore));
+};
 
 // we also need to make timer start counting when button is clicked. link both?
 

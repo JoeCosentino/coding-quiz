@@ -19,6 +19,7 @@ var questionIndex = 0
 var buttonEl = document.querySelector("#start-quiz");
 var timerStart = document.querySelector("#timer");
 var quizQuestionEl = document.querySelector("#quiz-questions");
+var quizChoicesEl = document.querySelector("#quiz-choices");
 var secondsLeft = 15;
 
 var questions = [
@@ -52,20 +53,31 @@ console.log(questions)
 
 
 // now once button is cicked, you must run a function to create the html
+var getQuestion = function(questionIndex) {
+    if(secondsLeft > 0) {
+    document.querySelector("#quiz-questions").textContent = questions[questionIndex].question;
+    }
+};
+
+// create a function to show the choices
+var getChoices = function(questionIndex) {
+    if (secondsLeft > 0) {
+        var quizChoices = document.createElement("button");
+        quizChoices.textContent = questions[questionIndex].choices;
+        quizChoicesEl.appendChild(quizChoices);
+
+    }
+};
 
 function start(){
     myTimer();
     //disable the start button
     buttonEl.disabled = true;
     //write a function that its going to show you the first question
-    getQuestion();
+    getQuestion(questionIndex);
+    getChoices(questionIndex);
+    //choices must be buttons though that people can click
 
-    var getQuestion = function(questionIndex) {
-        document.querySelector("#quiz-questions").textContent = questions[questionIndex].question;
-        // if(secondsLeft > 0) {
-            
-        // };
-    };
      // show the choices
 };
 

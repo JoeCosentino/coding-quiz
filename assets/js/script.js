@@ -15,9 +15,10 @@
 // first step: what happens when button is clicked? quiz appears in form of html, so html will have to be dynamically created.
 
 // therefore an event listener should be added to the button, and we need to get the button with query selector
-
+var questionIndex = 0
 var buttonEl = document.querySelector("#start-quiz");
 var timerStart = document.querySelector("#timer");
+var quizQuestionEl = document.querySelector("#quiz-questions");
 var secondsLeft = 15;
 
 var questions = [
@@ -53,25 +54,26 @@ console.log(questions)
 // now once button is cicked, you must run a function to create the html
 
 function start(){
-    myTimer()
+    myTimer();
     //disable the start button
-    buttonEl.innerHTML = selected; disabled;
+    buttonEl.disabled = true;
     //write a function that its going to show you the first question
-    var getQuestion = function() {
-        if(secondsLeft > 0) {
-            document.querySelector("#quiz-q").textContent = questions[0].question;
-            // show the choices
-            var displayChoices = function() {
-            document.querySelector("#quiz-a").textContent = questions[0].choices;
-            };
-        }
+
+    var getQuestion = function(questionIndex) {
+        document.querySelector("text-questions").textContent = questions[questionIndex].question;
+        // if(secondsLeft > 0) {
+            
+        // };
     };
+     console.log(getQuestion);
+     // show the choices
+};
 
     // show the choices
     var displayChoices = function() {
-        document.querySelector("#quiz-a").textContent = questions[0].choices;
+        document.querySelector("#quiz-choices").textContent = questions[0].choices;
     };
-}
+
 
 function startQuiz(){
     //show the question

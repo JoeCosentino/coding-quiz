@@ -32,3 +32,7 @@ main {
   border-radius: 15px;
   font-size: 30px;
 }
+
+.quiz-hide {
+  display: none;
+}

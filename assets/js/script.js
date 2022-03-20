@@ -20,6 +20,7 @@ var buttonEl = document.querySelector("#start-quiz");
 var timerStart = document.querySelector("#timer");
 var quizQuestionEl = document.querySelector("#quiz-questions");
 var quizChoicesEl = document.querySelector("#quiz-choices");
+var quizBodyEl = document.querySelector("#quiz-body");
 var secondsLeft = 75;
 
 var questions = [
@@ -54,14 +55,14 @@ console.log(questions)
 
 // now once button is cicked, you must run a function to create the html
 var getQuestion = function(questionIndex) {
-    if(secondsLeft > 0) {
+    if(secondsLeft > 0 && questionIndex < 5) {
     document.querySelector("#quiz-questions").textContent = questions[questionIndex].question;
     }
 };
 
 // create a function to show the choices
 var getChoices = function(questionIndex) {
-    if (secondsLeft > 0) {
+    if (secondsLeft > 0 && questionIndex < 5) {
         for(var i = 0; i < questions[questionIndex].choices.length; i++) {
             var quizChoices = document.createElement("button");
             quizChoices.textContent = questions[questionIndex].choices[i];
@@ -86,9 +87,19 @@ var checkAnswer = function() {
         getQuestion(questionIndex);
         getChoices(questionIndex);
     }
-    console.log(checkAnswer);
+    else if (secondsLeft === 0 || questionIndex === 5) {
+        // timer stop
+        var finalScore = secondsLeft;
+        // display score and give user chance to submit initials to highschore
+        // take quiz off of page
+        setHighScore(finalScore);
+         
+    }
 };
 
+var setHighScore = function() {
+    localStorage.setItem("finalScore", JSON.stringify(finalScore));
+};
 
 function start(){
     myTimer();
@@ -97,29 +108,13 @@ function start(){
     //write a function that its going to show you the first question
     getQuestion(questionIndex);
     getChoices(questionIndex);
-    //choices must be buttons though that people can click
-
-     // show the choices
 };
-
-    // show the choices
-    var displayChoices = function() {
-        document.querySelector("#quiz-choices").textContent = questions[0].choices;
-    };
-
-
-function startQuiz(){
-    //show the question
-    //add event listeners to the button answrs
-    //write a function in those event listeners that evaluate the answer and then go to next question either way
-}
-
 
 function myTimer() {
     var time = setInterval(function(){
         timerStart.innerHTML = secondsLeft + " sec left";
     secondsLeft--;
-    if (secondsLeft == -1) {
+    if (secondsLeft == -1 || questionIndex == 5) {
         clearInterval(time);
         alert("Time out!");
     }

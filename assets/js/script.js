@@ -58,14 +58,14 @@ function start(){
     //disable the start button
     buttonEl.disabled = true;
     //write a function that its going to show you the first question
+    getQuestion();
 
     var getQuestion = function(questionIndex) {
-        document.querySelector("text-questions").textContent = questions[questionIndex].question;
+        document.querySelector("#quiz-questions").textContent = questions[questionIndex].question;
         // if(secondsLeft > 0) {
             
         // };
     };
-     console.log(getQuestion);
      // show the choices
 };
 

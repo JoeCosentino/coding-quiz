@@ -65,12 +65,11 @@ var getChoices = function(questionIndex) {
         for(var i = 0; i < questions[questionIndex].choices.length; i++) {
             var quizChoices = document.createElement("button");
             quizChoices.textContent = questions[questionIndex].choices[i];
+            quizChoices.setAttribute("id", "choice-button");
             quizChoicesEl.appendChild(quizChoices);
+            quizChoices.onclick(checkAnswer);
         }
     }
-
-    checkAnswer();
-    // now program has to check the answer and move onto the next one
 };
 
 var checkAnswer = function() {

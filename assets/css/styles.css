@@ -13,7 +13,8 @@
 }
 
 .info {
-  padding: 0 20px;
+  padding: 30px 20px;
+  float: right;
 }
 
 main {
@@ -35,4 +36,20 @@ main {
 
 .quiz-hide {
   display: none;
+}
+
+.quiz-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-choices button {
+  flex-direction: column;
+  border: none;
+  background-color: lightblue;
+  border-radius: 5px;
+  padding: 20px 45px;
+  margin: 10px 20px;
 }

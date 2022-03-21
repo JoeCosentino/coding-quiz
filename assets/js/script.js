@@ -9,12 +9,6 @@
 // when all questions are answered or time equals zero, quiz is done
 
 // when the game is over, the user can save their score and initials
-
-
-
-// first step: what happens when button is clicked? quiz appears in form of html, so html will have to be dynamically created.
-
-// therefore an event listener should be added to the button, and we need to get the button with query selector
 var questionIndex = 0
 var buttonEl = document.querySelector("#start-quiz");
 var timerStart = document.querySelector("#timer");
@@ -50,8 +44,6 @@ var questions = [
     correctChoice: "console.log"
 }
 ];
-console.log(questions)
-
 
 // now once button is cicked, you must run a function to create the html
 var getQuestion = function(questionIndex) {
@@ -81,23 +73,19 @@ var checkAnswer = function() {
     }
     else if (event.target.value = questions[questionIndex].correctChoice) {
         alert("Correct!");
-        secondsLeft = secondsLeft + 7;
         questionIndex++;
         quizChoicesEl.innerHTML="";
         getQuestion(questionIndex);
         getChoices(questionIndex);
     }
-    // else if (secondsLeft === 0 || questionIndex === 5) {
-    //     // timer stop
-         
-    // }
 };
 
 function start(){
     myTimer();
     //disable the start button
     buttonEl.disabled = true;
-    //write a function that its going to show you the first question
+    buttonEl.style.display = "none";
+    //write a function that is going to show you the first question
     getQuestion(questionIndex);
     getChoices(questionIndex);
 };
@@ -109,19 +97,23 @@ function myTimer() {
     if (secondsLeft == -1 || questionIndex == 5) {
         clearInterval(time);
         alert("Time out!");
-        var finalScore = this.secondsLeft;
         // display score and give user chance to submit initials to highschore
-        // take quiz off of page
-        setHighScore(finalScore);
+        // var savedScore = [savedName, secondsLeft]; (another option, just leaving here for future reference)
+        var savedName = window.prompt("enter name here:");
+        setHighScore(secondsLeft + 1, savedName);
     }
-
     }, 1000);
 }
 
-var setHighScore = function() {
-    localStorage.setItem("finalScore", JSON.stringify(finalScore));
-};
+var setHighScore = function(score, name) {
+    console.log(score, name);
+    // get existing highschore list
+    // convert existing highscore string using json.parse
+    // create new array with old scores
+    // push new scores into array, may need an object somewhere
+    // set array and stringify (these comments are to save multiple initials, again for future reference)
+    localStorage.setItem("finalScore", JSON.stringify([score, name]));
 
-// we also need to make timer start counting when button is clicked. link both?
+};
 
 buttonEl.addEventListener("click", start);

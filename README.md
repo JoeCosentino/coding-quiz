@@ -3,14 +3,14 @@
 This is a README file for the Coding Quiz Challenge, completed by Joe Cosentino
 ## Important Links
 
-* main repository link: 
-* active webpage link: 
+* main repository link: https://github.com/JoeCosentino/coding-quiz
+* active webpage link: https://joecosentino.github.io/coding-quiz/
 
 ## To Download
 
 * you can download these files to your local computer using either:
-    1. SSH: 
-    2. HTTPS: 
+    1. SSH: git@github.com:JoeCosentino/coding-quiz.git
+    2. HTTPS: https://github.com/JoeCosentino/coding-quiz.git
 
 ## Collaboraters
 

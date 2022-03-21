@@ -23,7 +23,7 @@ This is a README file for the Coding Quiz Challenge, completed by Joe Cosentino
 * AskBCS
     - Provided much assistance and clarification during development of this application
 * UofT Tutor, John Titus
-    - Proved clarity and understanding into concepts about JavaScript and Local Storage
+    - Provided clarity and understanding into concepts about JavaScript and Local Storage
 
 ## Screenshot of Assignment
 

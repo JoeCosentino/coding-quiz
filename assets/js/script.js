@@ -108,11 +108,24 @@ function myTimer() {
 var setHighScore = function(score, name) {
     console.log(score, name);
     // get existing highschore list
+    var savedScores = localStorage.getItem("finalScore");
+    savedScores = JSON.parse(savedScores);
+    if(savedScores === null) {
+        savedScores = [];
+    }
+    console.log(savedScores);
+    savedScores.push({
+        "score": score,
+        "name": name
+    });
+    console.log(savedScores);
+
+    
     // convert existing highscore string using json.parse
     // create new array with old scores
     // push new scores into array, may need an object somewhere
     // set array and stringify (these comments are to save multiple initials, again for future reference)
-    localStorage.setItem("finalScore", JSON.stringify([score, name]));
+    localStorage.setItem("finalScore", JSON.stringify(savedScores));
 
 };
 

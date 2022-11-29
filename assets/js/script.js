@@ -42,6 +42,11 @@ var questions = [
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     choices: ["JavaScript", "Terminal Bash", "for loops", "console.log"],
     correctChoice: "console.log"
+},
+{
+    question: "Which technology is not in the MERN stack?",
+    choices: ["MongoDB", "JavaScript", "React.js", "Node.js"],
+    correctChoice: "JavaScript"
 }
 ];
 
